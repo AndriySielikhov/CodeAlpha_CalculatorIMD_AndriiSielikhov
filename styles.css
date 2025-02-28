@@ -1,0 +1,863 @@
+/* Глобальні стилі */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: 'Roboto', sans-serif;
+    
+}
+
+body {
+    background: url('./image/fon4.jpg') no-repeat center center fixed;
+    background-size: cover;
+    min-height: 100vh;
+}
+
+/* Стилі для екранів */
+.screen {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.5s ease, visibility 0.5s ease;
+}
+
+.screen.active-screen {
+    opacity: 1;
+    visibility: visible;
+}
+
+/* Стилі для фонів 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* Стилі для форми введення */
+.input-group {
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+    margin-bottom: 40px;
+    width: 100%;
+    max-width: 400px;
+    animation: fadeIn 1.2s ease-out;
+}
+
+.input-field {
+    width: 100%;
+    padding: 15px 25px;
+    border-radius: 30px;
+    border: 2px solid transparent;
+    font-size: 1.2em;
+    background: rgba(255, 255, 255, 0.9);
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+.input-field:focus {
+    outline: none;
+    border-color: #00c6ff;
+    box-shadow: 0 0 20px rgba(0, 198, 255, 0.5);
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* Стилі для результату */
+#bmiResult {
+    font-size: 2.5em;
+    color: #ffffff;
+    text-align: center;
+    margin: 30px 0;
+    text-shadow: 
+        0 0 10px #00c6ff, 
+        0 0 20px #00c6ff;
+    animation: neonGlow 1.5s ease-in-out infinite alternate;
+}
+
+.result-description {
+    font-size: 1.2em;
+    color: #ffffff;
+    text-align: center;
+    max-width: 600px;
+    margin: 0 auto 30px;
+    text-shadow: 0 0 10px #f907e9;
+}
+
+
+
+/* Заголовки */
+.title {
+    font-size: 3em;
+    font-weight: bold;
+    color: #ffffff;
+    text-align: center;
+    margin-bottom: 40px;
+    text-shadow: 0 0 10px #00c6ff, 0 0 20px #00c6ff, 0 0 30px #00c6ff;
+    animation: neonGlow 1.5s ease-in-out infinite alternate;
+}
+
+@keyframes neonGlow {
+    from {
+        text-shadow: 0 0 10px #000000, 0 0 20px #00c6ff, 0 0 30px #00c6ff;
+    }
+    to {
+        text-shadow: 0 0 20px #000000, 0 0 40px #00c6ff, 0 0 60px #00c6ff;
+    }
+}
+
+.subtitle {
+    font-size: 1.5em;
+    text-align: center;
+    color: #ffffff; /* Білий колір тексту для контрасту */
+    margin-bottom: 40px;
+    text-shadow: 0 0 10px #f907e9, 0 0 20px #f907e9, 0 0 30px #f907e9; /* Рожеві тіні */
+    animation: neonGlowPink 1.5s ease-in-out infinite alternate;
+}
+
+@keyframes neonGlowPink {
+    from {
+        text-shadow: 0 0 10px #000000, 0 0 20px #f907e9, 0 0 30px #f907e9;
+    }
+    to {
+        text-shadow: 0 0 20px #000000, 0 0 40px #f907e9, 0 0 60px #f907e9;
+    }
+}
+
+#genderScreen {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    overflow: hidden;
+}
+
+
+
+
+/* Загальні стилі для результатів */
+.result-content {
+    background: rgba(0, 0, 0, 0.8);
+    padding: 30px;
+    border-radius: 20px;
+    margin: 20px auto;
+    width: 90%;
+    max-width: 600px;
+    border: 2px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.3);
+    backdrop-filter: blur(10px);
+    color: white;
+    font-family: 'Arial', sans-serif;
+}
+
+.bmi-main {
+    display: flex;
+    align-items: baseline;
+    justify-content: center;
+    margin-bottom: 25px;
+    text-align: center;
+}
+
+.bmi-value {
+    font-size: 4.5em;
+    font-weight: 800;
+    margin-right: 10px;
+    color: #ffffff;
+    text-shadow: 0 0 15px rgba(255, 255, 255, 0.5);
+}
+
+.bmi-category {
+    font-size: 1.8em;
+    text-transform: uppercase;
+    font-weight: 600;
+    color: rgba(255, 255, 255, 0.8);
+}
+
+.recommendation-text {
+    font-size: 1.2em;
+    font-weight: 500;
+    text-align: center;
+    margin-bottom: 20px;
+    padding: 10px;
+    border-radius: 10px;
+    background: rgba(255, 255, 255, 0.05);
+}
+
+.recommendation-box {
+    background: rgba(255, 255, 255, 0.05);
+    padding: 20px;
+    border-radius: 15px;
+    margin: 25px 0;
+    display: none; /* Приховуємо всі блоки за замовчуванням */
+}
+
+.recommendation-box.active {
+    display: block; /* Показуємо активний блок */
+}
+
+.progress-bar {
+    height: 10px;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 5px;
+    margin-bottom: 20px;
+    overflow: hidden;
+}
+
+.progress-fill {
+    height: 100%;
+    border-radius: 5px;
+    transition: width 1s ease;
+}
+
+.health-tips {
+    display: grid;
+    gap: 15px;
+    margin-top: 25px;
+}
+
+.tip {
+    display: flex;
+    align-items: center;
+    padding: 15px;
+    border-radius: 10px;
+    background: rgba(255, 255, 255, 0.05);
+    transition: transform 0.3s ease, background 0.3s ease;
+}
+
+.tip:hover {
+    transform: translateY(-5px);
+    background: rgba(255, 255, 255, 0.1);
+}
+
+.tip img {
+    width: 100px; /* Фіксована ширина */
+    height: 100px; /* Фіксована висота */
+    margin-right: 15px;
+    border-radius: 50%; /* Робимо картинку круглою */
+    object-fit: cover; /* Забезпечуємо, щоб картинка заповнювала круг */
+    filter: drop-shadow(0 0 5px rgba(255, 255, 255, 0.3));
+    border: 2px solid rgba(255, 255, 255, 0.2); /* Додаємо тонку рамку */
+    transition: transform 0.3s ease, box-shadow 0.3s ease; /* Плавні переходи */
+}
+
+.tip img:hover {
+    transform: scale(1.1); /* Збільшення картинки при наведенні */
+    box-shadow: 0 0 15px rgba(255, 255, 255, 0.5); /* Тінь при наведенні */
+}
+
+.tip p {
+    margin: 0;
+    font-size: 1.3em;
+    color: rgba(255, 255, 255, 0.9);
+}
+
+
+/* Стилі для категорії underweight */
+.underweight .bmi-value {
+    color: #00d8ff;
+    text-shadow: 0 0 20px #00d8ff;
+}
+
+.underweight .progress-fill {
+    background: linear-gradient(90deg, #00d8ff, #0099ff);
+}
+
+.underweight .recommendation-text {
+    color: #00d8ff;
+}
+
+.underweight .tip {
+    border-left: 4px solid #00d8ff;
+}
+
+/* Стилі для категорії normal */
+.normal .bmi-value {
+    color: #00ff88;
+    text-shadow: 0 0 20px #00ff88;
+}
+
+.normal .progress-fill {
+    background: linear-gradient(90deg, #00ff88, #00ffee);
+}
+
+.normal .recommendation-text {
+    color: #00ff88;
+}
+
+.normal .tip {
+    border-left: 4px solid #00ff88;
+}
+
+/* Стилі для категорії overweight */
+.overweight .bmi-value {
+    color: #ffaa00;
+    text-shadow: 0 0 20px #ffaa00;
+}
+
+.overweight .progress-fill {
+    background: linear-gradient(90deg, #ffaa00, #ff6600);
+}
+
+.overweight .recommendation-text {
+    color: #ffaa00;
+}
+
+.overweight .tip {
+    border-left: 4px solid #ffaa00;
+}
+
+/* Стилі для категорії obese */
+.obese .bmi-value {
+    color: #ff4444;
+    text-shadow: 0 0 20px #ff4444;
+}
+
+.obese .progress-fill {
+    background: linear-gradient(90deg, #ff4444, #ff0000);
+}
+
+.obese .recommendation-text {
+    color: #ff4444;
+}
+
+.obese .tip {
+    border-left: 4px solid #ff4444;
+}
+
+
+
+.additional-recommendations {
+    margin-top: 25px;
+    padding: 20px;
+    border-radius: 15px;
+    background: rgba(255, 255, 255, 0.05);
+    border-left: 4px solid transparent;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.additional-recommendations:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.3);
+}
+
+.additional-recommendations .subtitle {
+    font-size: 1.4em;
+    font-weight: 600;
+    margin-bottom: 15px;
+    color: rgba(255, 255, 255, 0.9);
+    display: flex;
+    align-items: center;
+}
+
+.additional-recommendations .subtitle::before {
+    content: '';
+    display: inline-block;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    margin-right: 10px;
+    background: currentColor;
+}
+
+.additional-recommendations ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.additional-recommendations li {
+    padding: 10px;
+    margin: 5px 0;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 8px;
+    font-size: 0.95em;
+    color: rgba(255, 255, 255, 0.8);
+    display: flex;
+    align-items: center;
+    transition: background 0.3s ease, transform 0.3s ease;
+}
+
+.additional-recommendations li::before {
+    content: '✔';
+    margin-right: 10px;
+    color: currentColor;
+    font-size: 1.2em;
+}
+
+.additional-recommendations li:hover {
+    background: rgba(255, 255, 255, 0.1);
+    transform: translateX(10px);
+}
+
+/* Стилі для категорії underweight */
+.underweight .additional-recommendations {
+    border-left-color: #00d8ff;
+    background: rgba(0, 216, 255, 0.05);
+}
+
+.underweight .additional-recommendations .subtitle {
+    color: #00d8ff;
+}
+
+.underweight .additional-recommendations li::before {
+    color: #00d8ff;
+}
+
+.underweight .additional-recommendations li:hover {
+    background: rgba(0, 216, 255, 0.1);
+}
+
+/* Стилі для категорії normal */
+.normal .additional-recommendations {
+    border-left-color: #00ff88;
+    background: rgba(0, 255, 136, 0.05);
+}
+
+.normal .additional-recommendations .subtitle {
+    color: #00ff88;
+}
+
+.normal .additional-recommendations li::before {
+    color: #00ff88;
+}
+
+.normal .additional-recommendations li:hover {
+    background: rgba(0, 255, 136, 0.1);
+}
+
+/* Стилі для категорії overweight */
+.overweight .additional-recommendations {
+    border-left-color: #ffaa00;
+    background: rgba(255, 170, 0, 0.05);
+}
+
+.overweight .additional-recommendations .subtitle {
+    color: #ffaa00;
+}
+
+.overweight .additional-recommendations li::before {
+    color: #ffaa00;
+}
+
+.overweight .additional-recommendations li:hover {
+    background: rgba(255, 170, 0, 0.1);
+}
+
+/* Стилі для категорії obese */
+.obese .additional-recommendations {
+    border-left-color: #ff4444;
+    background: rgba(255, 68, 68, 0.05);
+}
+
+.obese .additional-recommendations .subtitle {
+    color: #ff4444;
+}
+
+.obese .additional-recommendations li::before {
+    color: #ff4444;
+}
+
+.obese .additional-recommendations li:hover {
+    background: rgba(255, 68, 68, 0.1);
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* Контейнери */
+
+.gender-container {
+    display: flex;
+    gap: 30px;
+    margin-bottom: 40px;
+    animation: fadeIn 1.2s ease-out;
+}
+
+.gender-block {
+    width: 180px;
+    height: 180px;
+    border-radius: 25px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    background: rgba(255, 255, 255, 0.9);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    border: 2px solid transparent; /* Додаємо прозору рамку */
+}
+
+.gender-block:hover {
+    transform: scale(1.05);
+}
+
+
+
+/* Стилі для чоловіка */
+.gender-block.male:hover {
+    border-color: #0072ff; /* Синьої рамка при наведенні */
+    box-shadow: 0 0 20px rgba(0, 114, 255, 0.6); /* Яскравіша тінь */
+}
+
+.gender-block.male:hover h3 {
+    color: #0072ff; /* Синій текст при наведенні */
+}
+
+.gender-block.male:hover .gender-icon {
+    filter: brightness(1.2) drop-shadow(0 0 10px rgba(0, 114, 255, 0.8)); /* Підсвітка іконки */
+}
+
+.gender-block.male.active {
+    background: #0072ff; /* Синій фон при виборі */
+    transform: scale(1.09);
+    box-shadow: 0 8px 25px rgba(0, 114, 255, 0.4);
+}
+
+.gender-block.male.active h3 {
+    color: #ffffff; /* Білий текст при виборі */
+}
+
+
+
+/* Стилі для жінки */
+.gender-block.female:hover {
+    border-color: #f907e9; /* Рожева рамка при наведенні */
+    box-shadow: 0 0 20px rgba(249, 7, 233, 0.6); /* Яскравіша тінь */
+}
+
+.gender-block.female:hover h3 {
+    color: #f907e9; /* Рожевий текст при наведенні */
+}
+
+.gender-block.female:hover .gender-icon {
+    filter: brightness(1.2) drop-shadow(0 0 10px rgba(249, 7, 233, 0.8)); /* Підсвітка іконки */
+}
+
+.gender-block.female.active {
+    background: #f907e9; /* Рожевий фон при виборі */
+    transform: scale(1.09);
+    box-shadow: 0 8px 25px rgba(249, 7, 233, 0.4);
+}
+
+.gender-block.female.active h3 {
+    color: #ffffff; /* Білий текст при виборі */
+}
+
+
+
+
+
+/* Іконки */
+.gender-icon {
+    width: 80px;
+    height: 80px;
+    margin-bottom: 18px;
+    transition: transform 0.3s ease;
+}
+
+.gender-block:hover .gender-icon {
+    transform: rotate(10deg) scale(1.1);
+}
+
+
+
+
+
+
+
+
+
+
+
+.button {
+    background: linear-gradient(100deg, #0072ff, #f200ff8f); /* Градієнтний фон */
+    color: black; /* Чорний колір тексту */
+    padding: 15px 50px;
+    border-radius: 30px;
+    border: none;
+    font-size: 1.8em;
+    cursor: pointer;
+    transition: all 0.9s ease;
+    box-shadow: 
+        0 0 10px rgba(0, 114, 255, 0.5), /* Неонове світіння */
+        0 0 20px rgba(0, 114, 255, 0.3), 
+        0 0 30px rgba(0, 114, 255, 0.2);
+    animation: neonGlowButton 1.5s ease-in-out infinite alternate;
+    position: relative;
+    overflow: hidden;
+    text-transform: uppercase; /* Великі літери */
+    font-weight: bold;
+    letter-spacing: 1px; /* Відстань між літерами */
+    -webkit-text-stroke: 0.1px rgb(255, 255, 255); /* Біла обводка тексту */
+    text-stroke: 0.1px white; /* Біла обводка тексту */
+    text-shadow: 
+        0 0 5px white, /* Додатковий ефект білої обводки */
+        0 0 10px white;
+}
+
+.button:hover {
+    background: linear-gradient(100deg, #f200ffbe, #0072ff8f); /* Зміна градієнта */
+    transform: translateY(-5px) scale(1.05); /* Піднімаємо кнопку і збільшуємо */
+    box-shadow: 
+        0 0 20px rgba(242, 0, 255, 0.8), /* Підсилюємо неонове світіння */
+        0 0 40px rgba(242, 0, 255, 0.5), 
+        0 0 60px rgba(242, 0, 255, 0.3);
+}
+
+/* Анімація неонового світіння для кнопки */
+@keyframes neonGlowButton {
+    from {
+        box-shadow: 
+            0 0 10px rgba(0, 114, 255, 0.5), 
+            0 0 20px rgba(0, 114, 255, 0.3), 
+            0 0 30px rgba(0, 114, 255, 0.2);
+    }
+    to {
+        box-shadow: 
+            0 0 20px rgba(0, 114, 255, 0.8), 
+            0 0 40px rgba(0, 114, 255, 0.5), 
+            0 0 60px rgba(0, 114, 255, 0.3);
+    }
+}
+
+/* Ефект хвилі при наведенні */
+.button::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 300%;
+    height: 300%;
+    background: radial-gradient(circle, rgba(0, 76, 255, 0), rgba(255, 255, 255, 0));
+    transform: translate(-50%, -50%) scale(0);
+    transition: transform 0.5s ease, opacity 0.5s ease;
+    opacity: 0;
+    border-radius: 50%;
+}
+
+.button:hover::after {
+    transform: translate(-50%, -50%) scale(1);
+    opacity: 1;
+}
+
+/* Ефект "розтягування" тексту */
+.button span {
+    display: inline-block;
+    transition: all 0.3s ease;
+}
+
+.button:hover span {
+    transform: scale(1.1); /* Збільшуємо текст */
+    color: #000000; /* Зміна кольору тексту */
+    
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+@keyframes pulse {
+    0% {
+        transform: scale(0.90);
+    }
+    50% {
+        transform: scale(1.07);
+    }
+    100% {
+        transform: scale(0.90)
+}}
+
+.button {
+    animation: pulse 2s infinite;
+}
+
+.button:hover {
+    animation: none; /* Зупиняємо пульсацію при наведенні */
+}
+
+
+.error-message {
+    color: #ff0000; /* Червоний колір тексту */
+    font-size: 1em;
+    margin-top: 10px;
+    text-align: center;
+    text-shadow: 
+        0 0 5px rgba(255, 0, 0, 0.8), /* Червона тінь */
+        0 0 10px rgba(255, 0, 0, 0.6);
+    display: none; /* Приховано за замовчуванням */
+}
+
+
+
+
+
+/* Анімації */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes wave {
+    0% {
+        transform: translate(-50%, -50%) scale(0);
+        opacity: 1;
+    }
+    100% {
+        transform: translate(-50%, -50%) scale(1);
+        opacity: 0;
+    }
+}
+
+/* Додаткові рекомендації */
+.additional-recommendations {
+    background: rgba(255, 255, 255, 0.1);
+    padding: 20px;
+    border-radius: 15px;
+    margin-top: 25px;
+    width: 100%;
+    max-width: 600px;
+}
+
+.additional-recommendations h3 {
+    font-size: 1.5em;
+    color: #ffffff;
+    text-align: center;
+    margin-bottom: 15px;
+    text-shadow: 0 0 10px #00c6ff;
+}
+
+.additional-recommendations ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+
+.additional-recommendations li {
+    font-size: 1.1em;
+    color: #ffffff;
+    padding: 10px 15px;
+    margin: 5px 0;
+    background: rgba(0, 198, 255, 0.1);
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+}
+
+.additional-recommendations li::before {
+    content: "✔️";
+    margin-right: 10px;
+    font-size: 1.2em;
+}
+
+
+/* Приховуємо всі блоки за замовчуванням */
+.recommendation-box {
+    display: none;
+}
+
+/* Показуємо лише активний блок */
+.recommendation-box.active {
+    display: block;
+}

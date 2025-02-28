@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BMI Calculator</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Lobster&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+
+</head>
+<body>
+    <!-- Сторінка вибору статі -->
+    <div class="screen active-screen" id="genderScreen">
+        <h1 class="title">BMI Calculator</h1>
+        <h2 class="subtitle">Please choose your gender</h2>
+        <div class="gender-container">
+            <div class="gender-block male" onclick="selectGender('male')">
+                <img src="./image/boy.png" alt="Male" class="gender-icon">
+                <h3>Male</h3>
+            </div>
+            <div class="gender-block female" onclick="selectGender('female')">
+                <img src="./image/female.png" alt="Female" class="gender-icon">
+                <h3>Female</h3>
+            </div>
+        </div>
+        <button class="button" id="continueButton" onclick="goToNextScreen()" disabled>Continue</button>
+    </div>
+
+    <!-- Сторінка введення параметрів -->
+    <div class="screen" id="parametersScreen">
+        <h1 class="title">Enter Your Details</h1>
+        <h2 class="subtitle">Provide your measurements</h2>
+        <div class="input-group">
+            <input type="number" id="height" class="input-field" placeholder="Height (cm)" required>
+            <input type="number" id="weight" class="input-field" placeholder="Weight (kg)" required>
+        </div>
+        <button class="button" onclick="calculateBMI()">Calculate</button>
+        <div class="error-message" id="parametersError"></div>
+    </div>
+
+    <!-- Сторінка результатів -->
+    <div class="screen" id="resultScreen">
+        <h1 class="title">Your BMI Result</h1>
+        <div class="result-content">
+            <div class="bmi-main">
+                <span id="bmiValue" class="bmi-value">24.5</span>
+                <span class="bmi-category" id="bmiCategory">Normal</span>
+            </div>
+            
+            <!-- Блок для underweight -->
+            <div class="recommendation-box underweight">
+                <div class="progress-bar">
+                    <div class="progress-fill" style="width: 75%;"></div>
+                </div>
+                <div class="recommendation-text">
+                    ⚠️ You are underweight. Aim to gain some weight for better health.
+                </div>
+                <div class="health-tips">
+                    <div class="tip">
+                        <img src="./image/under/under-1.jpg" alt="Nutrition">
+                        <p>Eat calorie-dense foods like nuts and avocados</p>
+                    </div>
+                    <div class="tip">
+                        <img src="./image/under/under-2.jpg" alt="Exercise">
+                        <p>Include strength training 3x/week</p>
+                    </div>
+                </div>
+                <div class="additional-recommendations">
+                    <h3 class="subtitle">Your Health Plan</h3>
+                    <ul>
+                        <li>Increase calorie intake</li>
+                        <li>Consult a nutritionist for a personalized plan</li>
+                        <li>Monitor your weight weekly</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Блок для normal -->
+            <div class="recommendation-box normal">
+                <div class="progress-bar">
+                    <div class="progress-fill" style="width: 100%;"></div>
+                </div>
+                <div class="recommendation-text">
+                    🎉 Perfect! Maintain your diet and exercise regularly.
+                </div>
+                <div class="health-tips">
+                    <div class="tip">
+                        <img src="./image/under/under-1.jpg" alt="Nutrition">
+                        <p>Balanced diet with 2500 kcal/day</p>
+                    </div>
+                    <div class="tip">
+                        <img src="./image/exercise-icon.png" alt="Exercise">
+                        <p>30-min cardio 5 times/week</p>
+                    </div>
+                </div>
+                <div class="additional-recommendations">
+                    <h3 class="subtitle">Your Health Plan</h3>
+                    <ul>
+                        <li>Track your daily calorie intake</li>
+                        <li>Drink at least 2 liters of water daily</li>
+                        <li>Sleep 7-8 hours per night</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Блок для overweight -->
+            <div class="recommendation-box overweight">
+                <div class="progress-bar">
+                    <div class="progress-fill" style="width: 60%;"></div>
+                </div>
+                <div class="recommendation-text">
+                    🔥 You are overweight. Aim to lose some weight for better health.
+                </div>
+                <div class="health-tips">
+                    <div class="tip">
+                        <img src="./image/nutrition-icon.png" alt="Nutrition">
+                        <p>Reduce sugar and processed foods</p>
+                    </div>
+                    <div class="tip">
+                        <img src="./image/exercise-icon.png" alt="Exercise">
+                        <p>45-min cardio 5 times/week</p>
+                    </div>
+                </div>
+                <div class="additional-recommendations">
+                    <h3 class="subtitle">Your Health Plan</h3>
+                    <ul>
+                        <li>Limit portion sizes</li>
+                        <li>Incorporate more vegetables and lean proteins</li>
+                        <li>Start with low-impact exercises like walking</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Блок для obese -->
+            <div class="recommendation-box obese">
+                <div class="progress-bar">
+                    <div class="progress-fill" style="width: 100%;"></div>
+                </div>
+                <div class="recommendation-text">
+                    ❗ You are obese. Consult a doctor for a health plan.
+                </div>
+                <div class="health-tips">
+                    <div class="tip">
+                        <img src="./image/nutrition-icon.png" alt="Nutrition">
+                        <p>Avoid sugary drinks and fast food</p>
+                    </div>
+                    <div class="tip">
+                        <img src="./image/exercise-icon.png" alt="Exercise">
+                        <p>Start with walking 30min/day</p>
+                    </div>
+                </div>
+                <div class="additional-recommendations">
+                    <h3 class="subtitle">Your Health Plan</h3>
+                    <ul>
+                        <li>Set realistic weight loss goals</li>
+                        <li>Monitor portion sizes and meal timing</li>
+                        <li>Seek professional guidance for exercise</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <button class="button" onclick="restart()">Check Again</button>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
