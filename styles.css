@@ -8,12 +8,15 @@
 }
 
 body {
-    background: url('./image/fon4.jpg') no-repeat center center fixed;
+    background: url('./image/fon6.jpg') no-repeat center center fixed;
     background-size: cover;
     min-height: 100vh;
+    margin: 0; /* Додаємо для уникнення відступів */
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
-/* Стилі для екранів */
 .screen {
     position: absolute;
     top: 0;
@@ -35,7 +38,8 @@ body {
     visibility: visible;
 }
 
-/* Стилі для фонів 
+
+ 
 
 
 
@@ -64,34 +68,97 @@ body {
 
 
 
-
-/* Стилі для форми введення */
+/* Стилі для групи введення */
 .input-group {
+    width: 100%;
+    margin-bottom: 30px;
     display: flex;
     flex-direction: column;
-    gap: 25px;
-    margin-bottom: 40px;
-    width: 100%;
-    max-width: 400px;
-    animation: fadeIn 1.2s ease-out;
+    align-items: center; /* Вирівнювання по центру */
+    gap: 10px;
+}
+
+.input-group label {
+    font-size: 1.2em;
+    color: #000000;
+    margin-bottom: 10px;
+    display: block;
+    
+}
+
+/* Стилі для контролю числа (вага, вік) */
+.number-control {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.control-button {
+    padding: 10px 20px;
+    font-size: 1.2em;
+    border: none;
+    border-radius: 10px;
+    background: #00c6ff;
+    color: white;
+    cursor: pointer;
+    transition: background 0.3s ease;
+}
+
+.control-button:hover {
+    background: #009acd;
 }
 
 .input-field {
-    width: 100%;
-    padding: 15px 25px;
-    border-radius: 30px;
-    border: 2px solid transparent;
-    font-size: 1.2em;
-    background: rgba(255, 255, 255, 0.9);
-    transition: all 0.3s ease;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    width: 100px;
+    padding: 10px;
+    border-radius: 10px;
+    border: 2px solid #ddd;
+    font-size: 1.1em;
     text-align: center;
+    transition: border-color 0.3s ease;
+    background: rgba(255, 255, 255, 0.9);
 }
 
 .input-field:focus {
-    outline: none;
     border-color: #00c6ff;
-    box-shadow: 0 0 20px rgba(0, 198, 255, 0.5);
+    outline: none;
+}
+
+/* Стилі для ползунка росту */
+.slider {
+    width: 20%; /* Зменшено ширину для кращого вигляду */
+    -webkit-appearance: none;
+    appearance: none;
+    height: 10px;
+    background: #ddd;
+    border-radius: 5px;
+    outline: none;
+    opacity: 0.8;
+    transition: opacity 0.3s ease;
+}
+
+.slider:hover {
+    opacity: 1;
+}
+
+.slider::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 20px;
+    height: 20px;
+    background: #00c6ff;
+    border-radius: 50%;
+    cursor: pointer;
+    box-shadow: 0 0 10px rgba(144, 0, 255, 0.5);
+}
+
+.slider::-moz-range-thumb {
+    width: 20px;
+    height: 20px;
+    background: #00c6ff;
+    border-radius: 50%;
+    cursor: pointer;
+    box-shadow: 0 0 10px rgba(144, 0, 255, 0.5);
 }
 
 
@@ -860,4 +927,278 @@ body {
 /* Показуємо лише активний блок */
 .recommendation-box.active {
     display: block;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* Стилі для сторінки результатів */
+#resultScreen {
+    padding: 10px; /* Зменшуємо відступи */
+}
+
+.title {
+    font-size: 2em; /* Зменшуємо розмір заголовка */
+    margin-bottom: 20px; /* Зменшуємо відступ */
+}
+
+.result-content {
+    background: rgba(0, 0, 0, 0.8);
+    padding: 20px; /* Зменшуємо внутрішні відступи */
+    border-radius: 15px;
+    width: 90%;
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.bmi-main {
+    display: flex;
+    align-items: baseline;
+    justify-content: center;
+    margin-bottom: 15px; /* Зменшуємо відступ */
+}
+
+.bmi-value {
+    font-size: 2.5em; /* Зменшуємо розмір тексту */
+    font-weight: 800;
+    margin-right: 10px;
+}
+
+.bmi-category {
+    font-size: 1.5em; /* Зменшуємо розмір тексту */
+    text-transform: uppercase;
+    font-weight: 600;
+}
+
+.recommendation-box {
+    margin-top: 15px; /* Зменшуємо відступ */
+}
+
+.progress-bar {
+    height: 8px; /* Зменшуємо висоту прогрес-бару */
+    margin-bottom: 10px; /* Зменшуємо відступ */
+}
+
+.progress-fill {
+    height: 100%;
+}
+
+.recommendation-text {
+    font-size: 1em; /* Зменшуємо розмір тексту */
+    margin-bottom: 10px; /* Зменшуємо відступ */
+}
+
+.health-tips {
+    display: grid;
+    gap: 10px; /* Зменшуємо відступи між елементами */
+    margin-top: 15px; /* Зменшуємо відступ */
+}
+
+.tip {
+    display: flex;
+    align-items: center;
+    padding: 10px; /* Зменшуємо внутрішні відступи */
+    border-radius: 8px;
+    background: rgba(255, 255, 255, 0.05);
+}
+
+.tip img {
+    width: 60px; /* Зменшуємо розмір зображень */
+    height: 60px;
+    margin-right: 10px; /* Зменшуємо відступ */
+}
+
+.tip p {
+    font-size: 0.9em; /* Зменшуємо розмір тексту */
+    margin: 0;
+}
+
+.additional-recommendations {
+    margin-top: 15px; /* Зменшуємо відступ */
+    padding: 15px; /* Зменшуємо внутрішні відступи */
+}
+
+.additional-recommendations h3 {
+    font-size: 1.2em; /* Зменшуємо розмір тексту */
+    margin-bottom: 10px; /* Зменшуємо відступ */
+}
+
+.additional-recommendations ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+
+.additional-recommendations li {
+    font-size: 0.9em; /* Зменшуємо розмір тексту */
+    padding: 8px 10px; /* Зменшуємо внутрішні відступи */
+    margin: 5px 0;
+    background: rgba(0, 198, 255, 0.1);
+    border-radius: 6px;
+}
+
+.button {
+    margin-top: 20px; /* Зменшуємо відступ */
+    font-size: 1.2em; /* Зменшуємо розмір тексту */
+    padding: 10px 30px; /* Зменшуємо внутрішні відступи */
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* Медіа-запити для адаптації */
+
+/* Телефони (до 600px) */
+@media (max-width: 600px) {
+    .title {
+        font-size: 2em;
+    }
+
+    .subtitle {
+        font-size: 1.2em;
+    }
+
+    .input-field {
+        font-size: 1em;
+        padding: 10px 20px;
+    }
+
+    .gender-container {
+        flex-direction: column;
+        gap: 20px;
+    }
+
+    .gender-block {
+        width: 140px;
+        height: 140px;
+    }
+
+    .gender-icon {
+        width: 60px;
+        height: 60px;
+    }
+
+    .button {
+        font-size: 1.5em;
+        padding: 10px 40px;
+    }
+
+    #bmiResult {
+        font-size: 2em;
+    }
+
+    .result-description {
+        font-size: 1em;
+    }
+}
+
+/* Планшети (від 601px до 1024px) */
+@media (min-width: 601px) and (max-width: 1024px) {
+    .title {
+        font-size: 2.5em;
+    }
+
+    .subtitle {
+        font-size: 1.3em;
+    }
+
+    .input-field {
+        font-size: 1.1em;
+        padding: 12px 22px;
+    }
+
+    .gender-container {
+        gap: 25px;
+    }
+
+    .gender-block {
+        width: 160px;
+        height: 160px;
+    }
+
+    .gender-icon {
+        width: 70px;
+        height: 70px;
+    }
+
+    .button {
+        font-size: 1.7em;
+        padding: 12px 45px;
+    }
+
+    #bmiResult {
+        font-size: 2.2em;
+    }
+
+    .result-description {
+        font-size: 1.1em;
+    }
+}
+
+/* Комп’ютери (від 1025px і більше) */
+@media (min-width: 1025px) {
+    .title {
+        font-size: 3em;
+    }
+
+    .subtitle {
+        font-size: 1.5em;
+    }
+
+    .input-field {
+        font-size: 1.2em;
+        padding: 15px 25px;
+    }
+
+    .gender-container {
+        gap: 30px;
+    }
+
+    .gender-block {
+        width: 180px;
+        height: 180px;
+    }
+
+    .gender-icon {
+        width: 80px;
+        height: 80px;
+    }
+
+    .button {
+        font-size: 1.8em;
+        padding: 15px 50px;
+    }
+
+    #bmiResult {
+        font-size: 2.5em;
+    }
+
+    .result-description {
+        font-size: 1.2em;
+    }
 }

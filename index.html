@@ -27,15 +27,41 @@
         <button class="button" id="continueButton" onclick="goToNextScreen()" disabled>Continue</button>
     </div>
 
-    <!-- Сторінка введення параметрів -->
     <div class="screen" id="parametersScreen">
         <h1 class="title">Enter Your Details</h1>
         <h2 class="subtitle">Provide your measurements</h2>
+        
+        <!-- Поле для ваги -->
         <div class="input-group">
-            <input type="number" id="height" class="input-field" placeholder="Height (cm)" required>
-            <input type="number" id="weight" class="input-field" placeholder="Weight (kg)" required>
+            <label for="weight">Weight (kg)</label>
+            <div class="number-control">
+                <button class="control-button minus" onclick="adjustWeight(-1)">-</button>
+                <input type="number" id="weight" class="input-field" value="65" min="30" max="200" oninput="validateWeight()">
+                <button class="control-button plus" onclick="adjustWeight(1)">+</button>
+            </div>
         </div>
-        <button class="button" onclick="calculateBMI()">Calculate</button>
+    
+        <!-- Поле для віку -->
+        <div class="input-group">
+            <label for="age">Age</label>
+            <div class="number-control">
+                <button class="control-button minus" onclick="adjustAge(-1)">-</button>
+                <input type="number" id="age" class="input-field" value="26" min="10" max="100" oninput="validateAge()">
+                <button class="control-button plus" onclick="adjustAge(1)">+</button>
+            </div>
+        </div>
+    
+        <!-- Поле для росту -->
+        <div class="input-group">
+            <label for="height">Height (cm)</label>
+            <input type="range" id="height" class="slider" min="100" max="250" value="170" oninput="updateHeightValue()">
+            <span id="heightValue">170</span> <!-- Початкове значення -->
+        </div>
+    
+        <!-- Кнопка розрахунку -->
+        <button class="button" onclick="calculateBMI()">Calculate BMI</button>
+    
+        <!-- Повідомлення про помилку -->
         <div class="error-message" id="parametersError"></div>
     </div>
 
