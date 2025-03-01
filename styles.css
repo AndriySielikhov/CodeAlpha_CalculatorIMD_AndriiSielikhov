@@ -724,7 +724,7 @@ body {
 
 .button {
     background: linear-gradient(100deg, #0072ff, #f200ff8f); /* Градієнтний фон */
-    color: black; /* Чорний колір тексту */
+    color: rgb(0, 187, 255); /* Чорний колір тексту */
     padding: 15px 50px;
     border-radius: 30px;
     border: none;
@@ -742,10 +742,10 @@ body {
     font-weight: bold;
     letter-spacing: 1px; /* Відстань між літерами */
     -webkit-text-stroke: 0.1px rgb(255, 255, 255); /* Біла обводка тексту */
-    text-stroke: 0.1px white; /* Біла обводка тексту */
+    text-stroke: 0.1px rgb(0, 183, 255); /* Біла обводка тексту */
     text-shadow: 
-        0 0 5px white, /* Додатковий ефект білої обводки */
-        0 0 10px white;
+        0 0 5px rgb(0, 234, 255), /* Додатковий ефект білої обводки */
+        0 0 10px rgb(0, 0, 0);
 }
 
 .button:hover {
