@@ -21,4 +21,4 @@ Welcome to the **Body Mass Index (BMI) Calculator** – a simple and interactive
 ## 📌 How to Use  
 1. Clone the repository:  
    ```sh
-   git clone https://github.com/AndriySielikhov/galleryMarvel_CodeAlpha.git
+   git clone https://github.com/AndriySielikhov/CodeAlpha_CalculatorIMD_AndriiSielikhov.git
